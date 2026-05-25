@@ -38,3 +38,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ion-menu {
+  z-index: 1000 !important;
+}
+
+ion-router-outlet {
+  z-index: 1;
+  position: relative;
+}
+
+ion-content {
+  --overflow: auto;
+}
+html, body, ion-app {
+  height: 100%;
+}
+
+ion-app {
+  overflow: hidden;
+}
+ion-icon {
+  font-size: 22px;
+  color: #0f172a;
+  display: inline-block;
+}

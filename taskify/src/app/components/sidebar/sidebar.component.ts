@@ -11,5 +11,7 @@ import { IonicModule } from '@ionic/angular';
   ],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
+  standalone: true,
+  imports: [IonicModule, RouterModule],
 })
 export class SidebarComponent {}

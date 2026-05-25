@@ -4,6 +4,7 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 
 import { addIcons } from 'ionicons';
 import {
+  checkmarkOutline,
   createOutline,
   gridOutline,
   homeOutline,
@@ -15,7 +16,8 @@ addIcons({
   trashOutline,
   createOutline,
   homeOutline,
-  gridOutline
+  gridOutline,
+  checkmarkOutline,
 });
 
 bootstrapApplication(AppComponent, {

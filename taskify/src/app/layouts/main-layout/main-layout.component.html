@@ -1,0 +1,51 @@
+<!-- MOBILE MENU -->
+<ion-menu
+  contentId="main-content"
+  type="overlay"
+  side="start"
+  class="custom-menu"
+>
+
+  <app-sidebar></app-sidebar>
+
+</ion-menu>
+
+<!-- MAIN LAYOUT -->
+<div
+  id="main-content"
+  class="flex min-h-screen bg-slate-100"
+>
+
+  <!-- DESKTOP SIDEBAR -->
+  <div class="hidden md:block">
+
+    <app-sidebar></app-sidebar>
+
+  </div>
+
+  <!-- CONTENT -->
+  <div class="flex-1 min-h-screen">
+
+    <!-- MOBILE TOPBAR -->
+    <div
+      class="md:hidden flex items-center bg-white shadow-sm p-4"
+    >
+
+      <ion-menu-button></ion-menu-button>
+
+      <h1 class="ml-4 text-xl font-bold text-slate-800">
+        Taskify 🚀
+      </h1>
+
+    </div>
+
+    <!-- ROUTES -->
+    <div class="p-6">
+
+      <router-outlet></router-outlet>
+
+    </div>
+
+  </div>
+
+</div>

@@ -3,38 +3,52 @@
   <!-- HEADER -->
   <div class="mb-8">
 
-    <h1 class="text-3xl font-bold text-slate-800">
-      Categorías
-    </h1>
+    <div class="flex items-start justify-between">
 
-    <p class="text-slate-500 mt-2">
-      Organiza tus tareas fácilmente 🚀
-    </p>
+      <div>
+
+        <h1 class="text-3xl font-bold text-slate-800">
+          Categorías
+        </h1>
+
+        <p class="text-slate-500 mt-2">
+          Organiza tus tareas fácilmente 🚀
+        </p>
+
+      </div>
+
+      <!-- CREATE BUTTON -->
+      <button
+        (click)="openCreateModal()"
+        class="bg-blue-500 hover:bg-blue-600 text-white px-5 h-12 rounded-xl transition-all shadow-md"
+      >
+
+        + Crear
+
+      </button>
+
+    </div>
 
   </div>
 
-  <!-- FORM -->
+  <!-- SEARCH -->
   <div
-    class="bg-white p-6 rounded-2xl shadow-md mb-8"
+    class="bg-white p-4 rounded-2xl shadow-md mb-8"
   >
 
-    <div class="flex gap-4">
+    <div class="flex items-center gap-3">
+
+      <ion-icon
+        name="search-outline"
+        class="text-slate-400 text-xl"
+      ></ion-icon>
 
       <input
-        [(ngModel)]="categoryName"
+        [(ngModel)]="search"
         type="text"
-        placeholder="Nombre de la categoría"
-        class="flex-1 border border-slate-200 rounded-xl p-3 outline-none focus:ring-2 focus:ring-blue-400"
+        placeholder="Buscar categoría"
+        class="flex-1 outline-none text-slate-700"
       />
-
-      <button
-        (click)="editingId ? saveEdit() : createCategory()"
-        class="bg-blue-500 hover:bg-blue-600 text-white px-6 rounded-xl transition-all"
-      >
-
-        {{ editingId ? 'Guardar' : 'Crear' }}
-
-      </button>
 
     </div>
 
@@ -44,7 +58,7 @@
   <div class="grid gap-4">
 
     <div
-      *ngFor="let category of categories"
+      *ngFor="let category of filteredCategories"
       class="bg-white rounded-2xl shadow-md p-5 flex items-center justify-between"
     >
 
@@ -60,7 +74,7 @@
 
         <!-- EDIT -->
         <button
-          (click)="startEdit(category)"
+          (click)="openEditModal(category)"
           class="w-11 h-11 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200"
         >
 
@@ -89,5 +103,82 @@
     </div>
 
   </div>
+
+<!-- MODAL -->
+<div
+  *ngIf="showModal"
+  (click)="closeModal()"
+  class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+>
+
+  <!-- MODAL -->
+  <div
+    (click)="$event.stopPropagation()"
+    class="bg-white w-full max-w-lg rounded-3xl shadow-2xl p-8"
+  >
+
+    <!-- TOP -->
+    <div
+      class="flex items-center justify-between mb-6"
+    >
+
+      <div>
+
+        <h2 class="text-2xl font-bold text-slate-800">
+
+          {{ editingId ? 'Editar categoría' : 'Nueva categoría' }}
+
+        </h2>
+
+        <p class="text-slate-500 mt-1">
+
+          Completa la información
+
+        </p>
+
+      </div>
+
+      <!-- CLOSE -->
+      <button
+        (click)="closeModal()"
+        class="w-10 h-10 rounded-full hover:bg-slate-100 flex items-center justify-center transition-all"
+      >
+
+        ✕
+
+      </button>
+
+    </div>
+
+    <!-- FORM -->
+    <div class="flex flex-col gap-5">
+
+      <!-- INPUT -->
+      <input
+        [(ngModel)]="categoryName"
+        type="text"
+        placeholder="Nombre de la categoría"
+        class="border border-slate-200 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-blue-400"
+      />
+
+      <!-- BUTTON -->
+      <button
+        [disabled]="!categoryName.trim()"
+        (click)="editingId ? saveEdit() : createCategory()"
+        class="h-14 rounded-2xl text-white font-semibold transition-all duration-200"
+        [class.bg-blue-500]="categoryName.trim()"
+        [class.hover:bg-blue-600]="categoryName.trim()"
+        [class.bg-slate-300]="!categoryName.trim()"
+      >
+
+        {{ editingId ? 'Guardar' : 'Agregar' }}
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 
 </div>

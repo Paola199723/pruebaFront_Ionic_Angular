@@ -1,12 +1,92 @@
-<div class="flex">
+<div>
 
-
-  <!-- Content -->
-  <div class="flex-1 bg-slate-100 min-h-screen p-6">
+  <!-- HEADER -->
+  <div class="mb-8">
 
     <h1 class="text-3xl font-bold text-slate-800">
-      Mis categorías
+      Categorías
     </h1>
+
+    <p class="text-slate-500 mt-2">
+      Organiza tus tareas fácilmente 🚀
+    </p>
+
+  </div>
+
+  <!-- FORM -->
+  <div
+    class="bg-white p-6 rounded-2xl shadow-md mb-8"
+  >
+
+    <div class="flex gap-4">
+
+      <input
+        [(ngModel)]="categoryName"
+        type="text"
+        placeholder="Nombre de la categoría"
+        class="flex-1 border border-slate-200 rounded-xl p-3 outline-none focus:ring-2 focus:ring-blue-400"
+      />
+
+      <button
+        (click)="editingId ? saveEdit() : createCategory()"
+        class="bg-blue-500 hover:bg-blue-600 text-white px-6 rounded-xl transition-all"
+      >
+
+        {{ editingId ? 'Guardar' : 'Crear' }}
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- CATEGORY LIST -->
+  <div class="grid gap-4">
+
+    <div
+      *ngFor="let category of categories"
+      class="bg-white rounded-2xl shadow-md p-5 flex items-center justify-between"
+    >
+
+      <div>
+
+        <h2 class="text-lg font-semibold text-slate-800">
+          {{ category.name }}
+        </h2>
+
+      </div>
+
+      <div class="flex items-center gap-3">
+
+        <!-- EDIT -->
+        <button
+          (click)="startEdit(category)"
+          class="w-11 h-11 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200"
+        >
+
+          <ion-icon
+            name="create-outline"
+            class="text-black text-lg"
+          ></ion-icon>
+
+        </button>
+
+        <!-- DELETE -->
+        <button
+          (click)="deleteCategory(category.id)"
+          class="w-11 h-11 rounded-full bg-white shadow-md flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-200"
+        >
+
+          <ion-icon
+            name="trash-outline"
+            class="text-black text-lg"
+          ></ion-icon>
+
+        </button>
+
+      </div>
+
+    </div>
 
   </div>
 

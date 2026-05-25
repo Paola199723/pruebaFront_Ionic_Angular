@@ -10,8 +10,8 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
   imports: [
     CommonModule,
     RouterModule,
-    SidebarComponent,
-    IonicModule
+    IonicModule,
+    SidebarComponent
   ],
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],

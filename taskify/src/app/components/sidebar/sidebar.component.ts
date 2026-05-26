@@ -5,11 +5,7 @@ import { IonicModule } from '@ionic/angular';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [
-    IonicModule,
-    RouterModule
-  ],
+  imports: [IonicModule, RouterModule],
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {}

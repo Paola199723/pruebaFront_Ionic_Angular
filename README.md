@@ -1,6 +1,4 @@
-Aquí tienes el README listo para copiar y pegar directamente:
 
----
 
 # Taskify - Ionic Angular + Firebase Remote Config
 
